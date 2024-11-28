@@ -1,0 +1,29 @@
+/** @format */
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #121212 !important;
+  width: 100%;
+}
+
+code,
+*,
+html {
+  font-family: Montserrat !important;
+}
+
+:root {
+  --font-size-heading: 42px; /* Largest Heading */
+  --font-size-subheading: 36px; /* Subheading */
+  --font-size-medium-large: 32px; /* Subheading */
+  --font-size-large: 23px; /* Large font size */
+  --font-size-medium: 22px; /* Medium font size */
+  --font-size-base: 20px; /* Base font size */
+  --font-size-small: 18px; /* Small font size */
+  --font-size-smaller: 16px; /* Slightly smaller */
+  --font-size-extra-small: 14px; /* Extra small font size */
+  --font-size-xs-small: 12px; /* Smallest font size */
+}

@@ -1,0 +1,193 @@
+.logincontainer {
+    background-color: #121212;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.loginsubcontainer {
+    width: 45%;
+    margin: auto;
+    height: auto;
+    padding: 2rem 2rem 5rem 2rem;
+    gap: 0px;
+    border-radius: 20px;
+    border: 1.35px;
+    background: #FFFFFF;
+    border: 1.35px solid #EAEAEA;
+    box-shadow: 0px 4px 4px 0px #0000004D;
+    box-shadow: 0px 8px 12px 6px #00000026;
+}
+
+.loginlogocontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginlogo {
+    width: 277.11px;
+    height: 69.28px;
+    overflow: hidden;
+
+}
+
+.loginlogo img {
+    width: 100%;
+    height: 100%;
+}
+
+.loginadmin {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.loginadmin h1 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45.94px;
+    color: #121212;
+    margin: 0;
+}
+
+.loginadmin p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    color: #0D0D0DB2;
+    margin: 0;
+}
+
+.logininputs {}
+
+.logininputsemail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+
+.logininputsemail label {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 32.44px;
+    color: #303030;
+    margin: 0;
+}
+
+.logininputsemail input {
+    width: 98%;
+    height: 45px;
+    border-radius: 5px;
+    padding-left: 1rem;
+    background-color: #FFFFFF;
+    border: 1px solid #B3B3B3;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #0D0D0DB2;
+    margin: 0;
+}
+
+.logininputsemail input::placeholder {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #0D0D0DB2;
+    margin: 0;
+}
+
+.loginforget {
+    text-align: end;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.loginforget p {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 32.44px;
+    color: #303030;
+    margin: 0;
+}
+
+
+.loginbutton {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.loginbutton button {
+    width: 100%;
+    height: 55px;
+    border-radius: 12px;
+    background: #121212;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 21.63px;
+    line-height: 43.25px;
+    color: #FFFFFF;
+    margin: 0;
+    cursor: pointer;
+}
+
+.loginbuttonback {
+    width: 100%;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: #FCFCFC;
+    border: 1px solid #B3B3B3;
+    cursor: pointer;
+}
+
+.loginbuttonback span {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+    margin: 0;
+}
+
+
+.forgetpassword{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.forgetpasswordcontainer {
+    width: 305px;
+    height: 311.1px;
+
+}
+
+.forgetpasswordcontainer img {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .loginsubcontainer {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 360px) {}
