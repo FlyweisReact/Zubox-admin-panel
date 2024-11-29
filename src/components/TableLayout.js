@@ -8,7 +8,7 @@ const TableLayout = ({ thead, tbody, isPagination = true }) => {
   return (
     <>
       <div className="overFlowCont">
-        <Table>
+        <Table responsive>
           <thead>
             <tr>
               {thead?.map((i, index) => (

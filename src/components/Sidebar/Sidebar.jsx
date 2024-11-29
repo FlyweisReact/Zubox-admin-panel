@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import img from "../../assest/sidelogo.png";
@@ -59,17 +59,17 @@ const Sidebar = () => {
     {
       name: "Site Map",
       icon: <TfiMapAlt />,
-      link: "/FAQ",
+      link: "/site-map",
     },
     {
       name: "Users",
       icon: <FaUser />,
-      link: "/privacypolicy",
+      link: "/users",
     },
     {
       name: "About us",
       icon: <IoMdInformationCircle />,
-      link: "/chats",
+      link: "/about-us",
     },
     {
       name: "Slider Video",

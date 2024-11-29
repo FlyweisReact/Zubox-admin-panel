@@ -84,13 +84,6 @@
   background-color: #e4e4e4;
 }
 
-.table_container table thead tr th:first-child {
-  border-radius: 20px 0 0 0;
-}
-
-.table_container table thead tr th:last-child {
-  border-radius: 0 20px 0 0;
-}
 .table_container table thead tr th {
   color: #656565;
 }

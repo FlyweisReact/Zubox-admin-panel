@@ -10,6 +10,9 @@ import Login from "../pages/Login/Login";
 import Logo from "../pages/Logo/Logo";
 import Places from "../pages/Places/Places";
 import CellsDetail from "../pages/CellsDetail/CellsDetail";
+import Sitemap from "../pages/SiteMap/Sitemap";
+import Users from "../pages/Users/Users";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const routes = [
   {
@@ -55,6 +58,18 @@ const routes = [
       {
         element: <CellsDetail />,
         path: "/cells-details",
+      },
+      {
+        element: <Sitemap />,
+        path: "/site-map",
+      },
+      {
+        element: <Users />,
+        path: "/users",
+      },
+      {
+        element: <AboutUs />,
+        path: "/about-us",
       },
     ],
   },

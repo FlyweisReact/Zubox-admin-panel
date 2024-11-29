@@ -1,8 +1,21 @@
 /**
- * Dashboard css
+ * For WebKit-based browsers (Chrome, Safari, Edge)
  *
  * @format
  */
+::-webkit-scrollbar {
+  width: 5px;
+  display: none;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .topdashboard {
   display: flex;
@@ -877,9 +890,14 @@
 .default-layout .right-container {
   flex: 1;
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px;
   height: 100%;
   background-color: #121212;
+}
+
+.page-container {
+  height: 100%;
+  overflow-y: auto;
 }
 
 .page-container .main-content h5.headline {
@@ -890,6 +908,8 @@
 .overFlowCont {
   width: 100%;
   overflow-y: auto;
+  background-color: #fff;
+  border-radius: 20px;
 }
 table {
   margin-bottom: 0px !important;
@@ -902,7 +922,6 @@ table tbody tr td {
 }
 
 .pagination {
-  background-color: #fff;
   width: 100%;
   padding: 20px;
   display: flex;
@@ -910,7 +929,6 @@ table tbody tr td {
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
-  border-radius: 0px 0px 20px 20px;
 }
 
 .pagination button {
