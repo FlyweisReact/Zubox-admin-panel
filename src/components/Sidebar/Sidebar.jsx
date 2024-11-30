@@ -1,124 +1,113 @@
 /** @format */
 
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import "./Sidebar.css";
-import img from "../../assest/sidelogo.png";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { MdHome } from "react-icons/md";
 import { LuBarChart2 } from "react-icons/lu";
 import { FaLocationDot } from "react-icons/fa6";
 import { GiSkills } from "react-icons/gi";
 import { PiMicrosoftExcelLogoBold } from "react-icons/pi";
-
 import { TfiMapAlt } from "react-icons/tfi";
 import { FaUser } from "react-icons/fa";
 import { IoMdInformationCircle } from "react-icons/io";
 import { GoDeviceCameraVideo } from "react-icons/go";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsFileEarmarkSpreadsheet } from "react-icons/bs";
+import { default_logo } from "../../assest";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const sidebarItems = [
     {
       name: "Dashboard",
-      icon: <MdHome />,
+      icon: <MdHome size={18} />,
       link: "/dashboard",
     },
     {
       name: "Logo",
-      icon: <MdHome />,
+      icon: <MdHome size={18} />,
       link: "/logo",
     },
     {
       name: "Cell",
-      icon: <LuBarChart2 />,
+      icon: <LuBarChart2 size={18} />,
       link: "/cell",
     },
     {
       name: "Places",
-      icon: <FaLocationDot />,
+      icon: <FaLocationDot size={18} />,
       link: "/places",
     },
     {
       name: "Country & City",
-      icon: <FaLocationDot />,
+      icon: <FaLocationDot size={18} />,
       link: "/country&city",
     },
     {
       name: "Skill Catagory",
-      icon: <GiSkills />,
+      icon: <GiSkills size={18} />,
       link: "/skill-category",
     },
     {
       name: "Cell’s Details",
-      icon: <PiMicrosoftExcelLogoBold />,
+      icon: <PiMicrosoftExcelLogoBold size={18} />,
       link: "/cells-details",
     },
     {
       name: "Site Map",
-      icon: <TfiMapAlt />,
+      icon: <TfiMapAlt size={18} />,
       link: "/site-map",
     },
     {
       name: "Users",
-      icon: <FaUser />,
+      icon: <FaUser size={18} />,
       link: "/users",
     },
     {
       name: "About us",
-      icon: <IoMdInformationCircle />,
+      icon: <IoMdInformationCircle size={18} />,
       link: "/about-us",
     },
     {
       name: "Slider Video",
-      icon: <GoDeviceCameraVideo />,
-      link: "/payments",
+      icon: <GoDeviceCameraVideo size={18} />,
+      link: "/slider-video",
     },
     {
       name: "User Cell",
-      icon: <BsFileEarmarkSpreadsheet />,
-      link: "/timesheet-Management",
+      icon: <BsFileEarmarkSpreadsheet size={18} />,
+      link: "/user-cells",
     },
     {
       name: "Website Background",
-      icon: <AiOutlineGlobal />,
-      link: "/termsconditions",
+      icon: <AiOutlineGlobal size={18} />,
+      link: "/website-background",
     },
   ];
 
-  const logout = () => {
-    navigate("/");
-  };
-
   return (
-    <>
-      <div className="sidebarcontainer">
-        <div className="sidelogo">
-          <div className="sidelogo1">
-            <img src={img} alt="Logo" />
-          </div>
-        </div>
-        <div className="sideitems">
-          {sidebarItems.map((item) => (
-            <NavLink
-              key={item.link}
-              to={item.link}
-              className={({ isActive }) =>
-                isActive ? "sideitemactive" : "sideitem"
-              }
-            >
-              {item.icon}
-              <p>{item.name}</p>
-            </NavLink>
-          ))}
-        </div>
-        <div className="sidelogoutbtn">
-          <button onClick={logout}>Logout</button>
-        </div>
-      </div>
-    </>
+    <div className="sidebar">
+      <img src={default_logo} alt="" className="thumbnail" />
+
+      <ul className="links">
+        {sidebarItems.map((item) => (
+          <li
+            className={`item ${
+              location.pathname === item.link ? "active" : ""
+            }`}
+            onClick={() => navigate(item.link)}
+          >
+            {item.icon}
+            {item.name}
+          </li>
+        ))}
+      </ul>
+
+      <button className="log_out_btn">Logout</button>
+    </div>
   );
 };
 

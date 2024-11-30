@@ -20,7 +20,7 @@
 }
 
 .logo_container {
-  max-width: 280px;
+  max-width: 200px;
   height: auto;
   display: block;
   margin: auto;
@@ -32,12 +32,20 @@
 }
 
 .headline {
-  font-size: 30px;
+  font-size: var(--font-size-large);
   font-weight: 600;
   margin: 0;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.sub_headline {
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  color: #0D0D0DB2;
+  margin-bottom: 40px;
 }
 
 .form_container {
@@ -53,7 +61,7 @@
   gap: 2px;
 }
 .input_group label {
-  font-size: 18px;
+  font-size: var(--font-size-smaller);
   font-weight: 500;
 }
 .input_group input {
@@ -62,42 +70,83 @@
   outline: none;
   font-weight: 500;
   border-radius: 12px;
+  font-size: var(--font-size-smaller)
+}
+.input_container {
+  display: flex;
+  width: 100%;
+  border: 1px solid #b3b3b3;
+  border-radius: 7px;
+  align-items: center;
+  gap: 10px;
+  padding: 0px 20px 0px 0px;
+}
+.input_container input {
+  flex: 1;
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  font-weight: 500;
+  font-size: var(--font-size-smaller)
 }
 .forget_password {
   color: #303030;
   text-align: right;
-  font-size: 18px;
   font-weight: 500;
   text-decoration: none;
+  font-size: var(--font-size-smaller)
 }
 
 .submitBtn {
   width: 100%;
   background-color: #121212;
-  font-size: 21px;
-  font-weight: 600;
+  border: 1px solid #121212;
+  font-size: var(--font-size-small);
+  font-weight: 500;
   padding: 10px;
   border-radius: 10px;
   margin-top: 20px;
   color: #fff;
   outline: none;
 }
+.backBtn {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 0px;
+  color: #000;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
 
+.gif_thumbnail{
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
 
 @media (max-width: 575.98px) {
-    .logo_container{
-        max-width: 120px;
-    }
-    .headline{
-        font-size: var(--font-size-large);
-    }
-    .input_group label,
-    .input_group input ,
-    .forget_password{
-        font-size: var( --font-size-smaller);
-    }
-    .submitBtn{
-     font-size: var(--font-size-small);   
-    }
-    
+  .logo_container {
+    max-width: 120px;
+  }
+  .headline {
+    font-size: var(--font-size-large);
+  }
+  .input_group label,
+  .input_group input,
+  .forget_password {
+    font-size: var(--font-size-smaller);
+  }
+  .submitBtn {
+    font-size: var(--font-size-small);
+  }
 }

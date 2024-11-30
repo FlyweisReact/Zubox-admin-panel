@@ -1,121 +1,146 @@
 /** @format */
 
 import React from "react";
-import { GiPlainCircle } from "react-icons/gi";
 import Navbar from "../../components/Navbar/Navbar";
+import styles from "../../css/modules/cell.module.css";
+import TableLayout from "../../components/TableLayout";
 
 const CountryCity = () => {
-  // Sample data array
-  const data = [
-    {
-      country_name: "India",
-      city_name: "Amritsar",
-    },
-    {
-      country_name: "Pakistan",
-    },
-    {
-      country_name: "China",
-    },
-    {
-      country_name: "Russia",
-    },
-    {
-      country_name: "USA",
-    },
-    {
-      country_name: "Europe",
-    },
-    {
-      country_name: "Sri-Lanka",
-    },
-    {
-      country_name: "England",
-    },
-    {
-      country_name: "Canada",
-    },
-    {
-      country_name: "Australia",
-    },
-    {
-      country_name: "Ukraine",
-    },
+  const body = [
+    [
+      "India",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+    [
+      "Pakistan",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+    [
+      "China",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+    [
+      "Russia",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
+    [
+      "USA",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
+    [
+      "Europe",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
+    [
+      "Sri-Lanka",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
+    [
+      "England",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
+    [
+      "Canada",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+    [
+      "Australia",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+    [
+      "Ukraine",
+      "List",
+      <div className={styles.btn_container}>
+        <button className={styles.submit}>Edit</button>
+        <button className={styles.reset}>Delete</button>
+      </div>,
+    ],
+  
   ];
+
   return (
     <>
       <Navbar text={"Country & City"} />
-      <div className="logocontainer">
-        <div className="logosubcontainer">
-          <div className="logoleftcontainer">
-            <div className="logolefticon">
-              <GiPlainCircle color="#000000" />
-              <div className="logoleftheading">
-                <h6>Country</h6>
-              </div>
-            </div>
+      <div className={styles.flex_container}>
+        <div className={styles.left_container}>
+          <div className={`${styles.head} ${styles.place_head}`}>
+            <div className={styles.blank} />
+            <h5 className={styles.headline}>Country</h5>
+          </div>
 
-            <div className="cellContainer">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Country Name</th>
-                    <th>City List</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((item, index) => (
-                    <tr key={index}>
-                      <td>{item.country_name}</td>
-                      <td>List</td>
-                      <td>
-                        <div className="logoleftlastrightbutton">
-                          <button style={{ color: "#EFC42E" }}>Edit</button>
-                          <button style={{ color: "#FF0000" }}>Delete</button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className="cellpagination">
-              <p>
-                <span style={{ background: "#000000", color: "#F5F5F5" }}>
-                  1
-                </span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <span>67</span>
-                <span>68</span>
-              </p>
-            </div>
+          <div className={`${styles.table_container} ${styles.places_table}`}>
+            <TableLayout
+              thead={["Country Name", "City List", "Action"]}
+              tbody={body}
+            />
           </div>
-          <div className="addcellcontainerright">
-            <div className="addcellicon">
-              <GiPlainCircle color="#000000" />
-              <div className="logoleftheading">
-                <h6>Add City</h6>
-              </div>
-            </div>
-            <div className="addcellinputscontainer">
-              <div className="addcellinputes">
-                <label htmlFor="">Country Name *</label>
-                <input type="text" />
-              </div>
-              <div className="addcellinputes">
-                <label htmlFor="">City Name</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="celladdbutton">
-              <div className="logoleftlastrightbutton">
-                <button>ADD</button>
-              </div>
-            </div>
+        </div>
+
+        <div className={styles.add_skills}>
+          <div className={styles.head}>
+            <div className={styles.point}></div>
+            <h5 className={styles.headline}>Add City</h5>
           </div>
+          <form className={styles.form_container}>
+            <div className={styles.input_group}>
+              <label>Country Name * </label>
+              <input type="text" />
+            </div>
+            <div className={styles.input_group}>
+              <label>City Name</label>
+              <input type="text" />
+            </div>
+           
+
+            <div className={styles.btn_container}>
+              <button className={styles.submit}>Save</button>
+            </div>
+          </form>
         </div>
       </div>
     </>

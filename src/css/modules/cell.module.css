@@ -1,0 +1,203 @@
+/** @format */
+
+.table_container table tr td {
+  border-right: 1px solid #dee2e6;
+}
+.table_container table thead tr th,
+.table_container table tbody tr td {
+  color: #05342f;
+}
+.places_table.table_container table thead tr th,
+.places_table.table_container table tbody tr td {
+  border: none;
+  position: relative;
+ 
+}
+.places_table.table_container table tbody tr td{
+  border-right: 1px solid #3bd9c9;
+}
+.places_table.table_container table thead tr th:last-child,
+.places_table.table_container table tbody tr td:last-child{
+  border-right: none;
+}
+
+.table_container table thead tr th {
+  font-weight: 700;
+}
+.flex_container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.flex_container .left_container {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+}
+.flex_container .left_container .head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.flex_container .left_container .place_head.head {
+  position: relative;
+  border: none;
+}
+.flex_container .left_container .place_head.head::after,
+.places_table.table_container table tbody tr td::after,
+.places_table.table_container table thead tr th::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Adjust the thickness of the border */
+  background: linear-gradient(to right, transparent, #3bd9c9, transparent);
+  display: block;
+}
+.flex_container .left_container .head .blank {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 100%;
+}
+
+.flex_container .left_container .head .headline {
+  font-size: var(--font-size-large);
+  font-weight: 500;
+  margin: 0;
+}
+
+.table_container .btn_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.table_container .btn_container button {
+  font-size: var(--font-size-xs-small);
+  background-color: #fff;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: 1px solid #fff;
+  padding: 4px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.table_container .btn_container button.submit {
+  color: #efc42e;
+}
+.table_container .btn_container button.reset {
+  color: #ff0000;
+}
+
+.add_skills {
+  padding: 20px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.add_skills .head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+.add_skills .head::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Adjust the thickness of the border */
+  background: linear-gradient(to right, transparent, #3bd9c9, transparent);
+  display: block;
+}
+.add_skills .head .point {
+  width: 10px;
+  height: 10px;
+  display: block;
+  background-color: #000;
+  border-radius: 100%;
+}
+.add_skills .head .headline {
+  margin: 0;
+  font-size: var(--font-size-large);
+}
+
+.add_skills .form_container {
+  padding: 10px 0px;
+}
+.add_skills .form_container label {
+  font-size: var(--font-size-xs-small);
+  font-weight: 500;
+}
+.add_skills .form_container input {
+  width: 100%;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: var(--font-size-xs-small);
+  font-weight: 500;
+}
+
+.add_skills .form_container .btn_container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.add_skills .form_container .input_group {
+  margin-top: 10px;
+}
+.add_skills .form_container .btn_container button {
+  width: 50%;
+  font-size: var(--font-size-xs-small);
+  background-color: #fff;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: 1px solid #fff;
+  padding: 8px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.add_skills .form_container .btn_container button.submit {
+  color: #01b529;
+}
+.add_skills .form_container .btn_container button.reset {
+  color: #af1740;
+}
+
+@media (max-width: 575.98px) {
+  .flex_container {
+    flex-direction: column-reverse;
+  }
+  .table_container,
+  .left_container,
+  .add_skills {
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .flex_container {
+    flex-direction: column-reverse;
+  }
+  .table_container,
+  .left_container,
+  .add_skills {
+    width: 100%;
+  }
+}

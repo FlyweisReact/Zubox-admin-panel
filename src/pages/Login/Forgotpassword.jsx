@@ -1,73 +1,78 @@
-import React, { useState } from 'react'
-import '../../css/Login.css'
-import { FaArrowLeft } from "react-icons/fa6";
-
-import img from '../../assest/logo.png'
-import img1 from '../../assest/img.gif'
-import { useNavigate } from 'react-router-dom';
+/** @format */
+import { useEffect, useState } from "react";
+import { logo, resetGif } from "../../assest";
+import styles from "../../css/modules/login.module.css";
+import { IoArrowBack } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const Forgotpassword = () => {
+  const [step, setStep] = useState(1);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-    const [show, setShow] = useState(false);
-
-    const toggele = () => {
-        setShow(true)
-        setTimeout(() => {
-            navigate('/')
-        }, 3000);
+  useEffect(() => {
+    if (step === 2) {
+      setTimeout(() => {
+        navigate("/");
+      }, [2000]);
     }
+  }, [step, navigate]);
 
-    return (
-        <>
-            <div className='logincontainer'>
-                <div className='loginsubcontainer'>
-                    <div className='loginlogocontainer'>
-                        <div className='loginlogo'>
-                            <img src={img} alt="" />
-                        </div>
-                    </div>
-                    {!show &&
-                        <>
-                            <div className='loginadmin'>
-                                <h1>Forgot password?</h1>
-                                <p>We'll send you a link to reset your password.</p>
-                            </div>
-                            <div className='logininputs'>
-                                <div className='logininputsemail'>
-                                    <label htmlFor="">Email</label>
-                                    <input
-                                        type="email"
-                                        placeholder='Enter your email'
-                                    />
-                                </div>
-                            </div>
-                            <div className='loginbutton'>
-                                <button onClick={toggele}>Reset Password</button>
-                                <div className='loginbuttonback' onClick={() => navigate('/')}>
-                                    <FaArrowLeft color='#000000' size={20} />
-                                    <span>Back</span>
-                                </div>
-                            </div>
-                        </>
-                    }
-                    {show &&
-                        <>
-                            <div className='forgetpassword'>
-                                <div className='forgetpasswordcontainer'>
-                                    <img src={img1} alt="" />
-                                </div>
-                            </div>
-                            <div className='loginadmin'>
-                                <h1>Rest link sent succesfully</h1>
-                                <p>Please check your mail.</p>
-                            </div>
-                        </>
-                    }
-                </div>
+  return (
+    <section className={styles.container}>
+      {step === 1 && (
+        <div className={styles.main_container}>
+          <div className={styles.logo_container}>
+            <img src={logo} alt="" />
+          </div>
+          <h5 className={styles.headline}>Forgot password?</h5>
+          <h5 className={styles.sub_headline}>
+            We'll send you a link to reset your password.
+          </h5>
+
+          <form className={styles.form_container}>
+            <div className={styles.input_group}>
+              <label htmlFor="email">Email</label>
+              <div className={styles.input_container}>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
-        </>
-    )
-}
 
-export default Forgotpassword
+            <button
+              className={styles.submitBtn}
+              type="button"
+              onClick={() => setStep(2)}
+            >
+              Reset Password
+            </button>
+            <button
+              className={styles.backBtn}
+              type="button"
+              onClick={() => navigate(-1)}
+            >
+              <IoArrowBack />
+              Back
+            </button>
+          </form>
+        </div>
+      )}
+
+      {step === 2 && (
+        <div className={styles.main_container}>
+          <div className={styles.logo_container}>
+            <img src={logo} alt="" />
+          </div>
+          <img src={resetGif} alt="" className={styles.gif_thumbnail} />
+          <h5 className={styles.headline}>Rest link sent succesfully</h5>
+          <h5 className={styles.sub_headline}>Please check your mail.</h5>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Forgotpassword;

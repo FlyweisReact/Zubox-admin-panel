@@ -1,0 +1,142 @@
+/** @format */
+
+.table_container th {
+  font-size: var(--font-size-smaller);
+}
+.table_container thead tr,
+.table_container thead tr th {
+  border: none;
+}
+.table_container .status {
+  background-color: #c8facd;
+  padding: 5px 20px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  margin: auto;
+  border-radius: 50px;
+  color: #01b529;
+}
+.table_container .status .blank {
+  width: 6px;
+  height: 6px;
+  background-color: #01b529;
+  border: 1px solid #01b529;
+  border-radius: 100%;
+}
+.table_container .date {
+  color: #6e6893;
+}
+.table_container table tbody tr {
+  border-bottom: 1px solid #3bd9c9;
+}
+.table_container .btn_container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.table_container .btn_container button {
+  font-size: var(--font-size-extra-small);
+  background-color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 20px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.table_container table thead tr {
+  border-bottom: 1px solid #9eebe3;
+}
+.table_container table tbody tr {
+  border-bottom: 1px solid #3bd9c8;
+}
+
+/* Edit Canvas */
+.edit_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 200;
+  padding: 20px;
+}
+.edit_container .container {
+  width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+.edit_container .container .head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #3bd9c9;
+  padding-bottom: 10px;
+}
+.edit_container .container .head .blank {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 100%;
+}
+.edit_container .container .head .headline {
+  margin: 0;
+  font-size: var(--font-size-base);
+}
+
+.edit_container .container .form_container {
+  margin-top: 20px;
+}
+.edit_container .container .form_container .input_group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+.edit_container .container .form_container .input_group label {
+  font-size: var(--font-size-extra-small);
+  font-weight: 500;
+}
+.edit_container .container .form_container .input_group input {
+  font-size: var(--font-size-extra-small);
+  font-weight: 500;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 7px;
+  padding: 10px;
+}
+.edit_container .container .form_container .btn_container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.edit_container .container .form_container .btn_container button {
+  width: 50%;
+  font-size: var(--font-size-extra-small);
+  background-color: #fff;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: 1px solid #fff;
+  padding: 8px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+.edit_container .container .form_container .btn_container button.submit {
+  color: #01b529;
+}
+.edit_container .container .form_container .btn_container button.reset {
+  color: #af1740;
+}

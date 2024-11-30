@@ -129,7 +129,6 @@ const MenuList = () => {
               <label>Menu Name</label>
               <input type="text" />
             </div>
-            
 
             <div className={styles.btn_container}>
               <button

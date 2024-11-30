@@ -13,6 +13,9 @@ import CellsDetail from "../pages/CellsDetail/CellsDetail";
 import Sitemap from "../pages/SiteMap/Sitemap";
 import Users from "../pages/Users/Users";
 import AboutUs from "../pages/AboutUs/AboutUs";
+import SliderVideo from "../pages/SliderVideo/SliderVideo";
+import UserCells from "../pages/Users/UserCells";
+import Background from "../pages/Background/Background";
 
 const routes = [
   {
@@ -70,6 +73,18 @@ const routes = [
       {
         element: <AboutUs />,
         path: "/about-us",
+      },
+      {
+        element: <SliderVideo />,
+        path: "/slider-video",
+      },
+      {
+        element: <UserCells />,
+        path: "/user-cells",
+      },
+      {
+        element: <Background />,
+        path: "/website-background",
       },
     ],
   },

@@ -5,59 +5,49 @@ import { GiPlainCircle } from "react-icons/gi";
 import img from "../../assest/Icon.png";
 import img1 from "../../assest/logo.png";
 import Navbar from "../../components/Navbar/Navbar";
+import styles from "../../css/modules/logo.module.css";
+import { chose_img_icon, prev_logo_icon } from "../../assest";
 
 const Logo = () => {
   return (
     <>
       <Navbar text={"Logo"} />
-      <div className="logocontainer">
-        <div className="logosubcontainer">
-          <div className="logoleftcontainer">
-            <div className="logolefticon">
-              <GiPlainCircle color="#000000" />
+      <div className={styles.choose_logo_container}>
+        <div className={styles.choose_new_one}>
+          <div className={styles.head}>
+            <span className={styles.blank} />
+            <h5 className={styles.headline}>Choose New Logo</h5>
+          </div>
+
+          <div className={styles.content}>
+            <div className={styles.img_container}>
+              <img src={chose_img_icon} alt="" />
             </div>
-            <div className="logoleftheading">
-              <h6>Choose New Logo</h6>
-            </div>
-            <div className="logoleftupload">
-              <div className="logoleftuploadleft">
-                <div className="logoleftuploadleftimage">
-                  <img src={img} alt="" />
-                </div>
-                <p>No File Chosen*</p>
-              </div>
-              <div className="logoleftlastright">
-                <div className="logoleftlastrightdate">
-                  <h6>Last Changed on</h6>
-                  <h6>01/05/2024</h6>
-                </div>
-                <div className="logoleftlastrightbuttonchoose">
-                  <button>Choose New Logo</button>
-                </div>
-                <div className="logoleftlastrightbutton">
-                  <button>Update</button>
-                  <button style={{ color: "#FF0000" }}>Reset</button>
-                </div>
+            <div className={styles.info}>
+              <h5 className={styles.headline}>
+                Last Changed on <br /> 01/05/2024
+              </h5>
+              <button className={styles.new_logo}>Choose New Logo</button>
+              <br />
+              <div className={styles.btn_container}>
+                <button className={styles.update_btn}>Update</button>
+                <button className={styles.reset_btn}>Reset</button>
               </div>
             </div>
           </div>
-          <div className="logorightcontainer">
-            <div className="logolefticon">
-              <GiPlainCircle color="#000000" />
+        </div>
+
+        <div className={styles.current_logo_container}>
+          <div className={styles.head}>
+            <span className={styles.blank} />
+            <h5 className={styles.headline}>Current Logo</h5>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.img_container}>
+              <img src={prev_logo_icon} alt="" />
             </div>
-            <div className="logoleftheading" style={{ padding: "0" }}>
-              <h6>Current Logo</h6>
-            </div>
-            <div className="logorightcontainerimage">
-              <div className="logorightcontainerimagelogo">
-                <img src={img1} alt="" />
-              </div>
-            </div>
-            <div className="logorightcontainerimagebutton">
-              <div className="logoleftlastrightbuttonchoose">
-                <button>Change</button>
-              </div>
-            </div>
+
+            <button className={styles.change_btn}>Change</button>
           </div>
         </div>
       </div>

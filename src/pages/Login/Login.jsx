@@ -1,12 +1,15 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../css/modules/login.module.css";
 import { logo } from "../../assest";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isPassword, setIsPassword] = useState(true);
+
   return (
     <>
       <section className={styles.container}>
@@ -19,22 +22,39 @@ const Login = () => {
           <form className={styles.form_container}>
             <div className={styles.input_group}>
               <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-              />
+              <div className={styles.input_container}>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+              </div>
             </div>
 
             <div className={styles.input_group}>
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter your Password"
-              />
+              <div className={styles.input_container}>
+                <input
+                  type={isPassword ? "password" : "text"}
+                  id="password"
+                  name="password"
+                  placeholder="Enter your Password"
+                />
+                {!isPassword ? (
+                  <FaEyeSlash
+                    size={20}
+                    cursor={"pointer"}
+                    onClick={() => setIsPassword(true)}
+                  />
+                ) : (
+                  <FaEye
+                    size={20}
+                    cursor={"pointer"}
+                    onClick={() => setIsPassword(false)}
+                  />
+                )}
+              </div>
             </div>
 
             <Link className={styles.forget_password} to={"/forgetpassword"}>

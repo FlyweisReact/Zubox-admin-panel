@@ -1,40 +1,39 @@
 /** @format */
 
-import React from "react";
-import "./Navbar.css";
+import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi";
-import img from "../../assest/Avatar.png";
+import { FaBars } from "react-icons/fa";
+import { SidebarCanvas } from "../Modals/Modals";
+import { avatar } from "../../assest";
 
-const Navbar = ({ toggleSidebar, text }) => {
+const Navbar = ({ text }) => {
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <div className="navbarcontainer">
-        <div className="navbarhumberger">
-          <div className="navbarhumberger1">
-            <GiHamburgerMenu
-              color="#FFFFFF"
-              size={25}
-              onClick={toggleSidebar}
+      <SidebarCanvas show={open} handleClose={() => setOpen(false)} />
+
+      <div className="navbar">
+        <div className="content">
+          <div className="ham-menu">
+            <FaBars
+              color="#fff"
+              size={20}
+              cursor={"pointer"}
+              onClick={() => setOpen(true)}
             />
           </div>
-          <div className="navbarleft">
+          <div className="info">
             <h6>
               Hello, <span>Admin 1</span>
             </h6>
             <h5>{text}</h5>
           </div>
         </div>
-        <div className="navbarright">
-          <div className="navbarrightsearchbox">
-            <div className="searchbarnavbar">
-              <IoSearch color="#000000" />
-              <input type="search" placeholder="Search" />
-            </div>
-            <div className="navbarprofile">
-              <img src={img} alt="" />
-            </div>
-          </div>
+
+        <div className="search_bar">
+          <IoSearch color="#000000" />
+          <input type="search" placeholder="Search" />
+          <img src={avatar} alt="" className="avatar" />
         </div>
       </div>
     </>

@@ -425,6 +425,10 @@
     color: #FF0000;
 }
 
+.events thead tr th{
+  border-right: 1px solid #b1b1b1;
+}
+
 
 @media (max-width: 768px) {
   .filter_btns button {
