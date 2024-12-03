@@ -53,13 +53,14 @@ export const DeleteConfirmation = ({
   );
 };
 
-export const DefaultDialog = ({ show, handleClose, children }) => {
+export const DefaultDialog = ({ show, handleClose, children ,size }) => {
   return (
     <Modal
       show={show}
       onHide={handleClose}
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      size={size}
     >
       {children}
     </Modal>
@@ -171,3 +172,6 @@ export const SidebarCanvas = ({ show, handleClose }) => {
     </Offcanvas>
   );
 };
+
+
+

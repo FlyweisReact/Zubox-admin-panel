@@ -4,7 +4,15 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import Pagination from "./Pagination";
 
-const TableLayout = ({ thead, tbody, isPagination = true }) => {
+const TableLayout = ({
+  thead,
+  tbody,
+  isPagination = true,
+  setCurrentPage,
+  currentPage,
+  totalDocs,
+  docsPerPage,
+}) => {
   return (
     <>
       <div className="overFlowCont">
@@ -26,7 +34,14 @@ const TableLayout = ({ thead, tbody, isPagination = true }) => {
             ))}
           </tbody>
         </Table>
-        {isPagination && <Pagination />}
+        {isPagination && totalDocs && (
+          <Pagination
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+            totalDocs={totalDocs}
+            docsPerPage={docsPerPage}
+          />
+        )}
       </div>
     </>
   );

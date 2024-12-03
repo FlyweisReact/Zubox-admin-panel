@@ -46,7 +46,6 @@
 }
 .choose_new_one .content .img_container img {
   width: 371px;
-
   object-fit: cover;
   object-position: center;
 }
@@ -130,9 +129,7 @@
 }
 .current_logo_container .img_container img {
   width: 100%;
-  min-height: 179px;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
 }
 
 .current_logo_container .content .change_btn {

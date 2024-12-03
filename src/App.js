@@ -4,10 +4,12 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ScrollToTop } from "./utils/utils";
 import routes from "./Routes";
+import { ReactNotifications } from "react-notifications-component";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ReactNotifications />
       <ScrollToTop />
       <Routes>
         {routes.map((routeGroup, index) => {

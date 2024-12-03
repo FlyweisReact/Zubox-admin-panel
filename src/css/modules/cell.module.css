@@ -90,6 +90,9 @@
   border-radius: 50px;
   font-weight: 600;
 }
+.table_container .btn_container button.view {
+  color: #3bd9c9;
+}
 .table_container .btn_container button.submit {
   color: #efc42e;
 }
@@ -102,6 +105,9 @@
   width: 400px;
   background-color: #fff;
   border-radius: 20px;
+}
+.add_skills.edit_skills{
+  width: 100%;
 }
 
 .add_skills .head {
@@ -140,7 +146,8 @@
   font-size: var(--font-size-xs-small);
   font-weight: 500;
 }
-.add_skills .form_container input {
+.add_skills .form_container input ,
+.add_skills .form_container select{
   width: 100%;
   border: 1px solid #ddd;
   outline: none;
@@ -180,6 +187,9 @@
   color: #af1740;
 }
 
+
+
+
 @media (max-width: 575.98px) {
   .flex_container {
     flex-direction: column-reverse;
@@ -188,6 +198,9 @@
   .left_container,
   .add_skills {
     width: 100%;
+  }
+  .table_container .btn_container {
+    flex-direction: column;
   }
 }
 

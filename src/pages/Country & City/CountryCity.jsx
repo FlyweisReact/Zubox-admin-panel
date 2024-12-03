@@ -1,11 +1,30 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "../../css/modules/cell.module.css";
 import TableLayout from "../../components/TableLayout";
+import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const CountryCity = () => {
+  const [loading, setLoading] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const payload = {
+      country,
+      city,
+    };
+    postApi(endPoints.city.create, payload, {
+      setLoading,
+      successMsgTitle: "Success",
+      successMsg: "Created !",
+    });
+  };
+
   const body = [
     [
       "India",
@@ -39,7 +58,7 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
+
     [
       "USA",
       "List",
@@ -48,7 +67,7 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
+
     [
       "Europe",
       "List",
@@ -57,7 +76,7 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
+
     [
       "Sri-Lanka",
       "List",
@@ -66,7 +85,7 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
+
     [
       "England",
       "List",
@@ -75,7 +94,7 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
+
     [
       "Canada",
       "List",
@@ -100,7 +119,6 @@ const CountryCity = () => {
         <button className={styles.reset}>Delete</button>
       </div>,
     ],
-  
   ];
 
   return (
@@ -126,16 +144,25 @@ const CountryCity = () => {
             <div className={styles.point}></div>
             <h5 className={styles.headline}>Add City</h5>
           </div>
-          <form className={styles.form_container}>
+          <form className={styles.form_container} onSubmit={submitHandler}>
             <div className={styles.input_group}>
               <label>Country Name * </label>
-              <input type="text" />
+              <input
+                type="text"
+                value={country}
+                required
+                onChange={(e) => setCountry(e.target.value)}
+              />
             </div>
             <div className={styles.input_group}>
               <label>City Name</label>
-              <input type="text" />
+              <input
+                type="text"
+                value={city}
+                required
+                onChange={(e) => setCity(e.target.value)}
+              />
             </div>
-           
 
             <div className={styles.btn_container}>
               <button className={styles.submit}>Save</button>

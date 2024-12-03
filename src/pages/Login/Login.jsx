@@ -5,10 +5,34 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../css/modules/login.module.css";
 import { logo } from "../../assest";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { postApi, tokenSaver } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
+import { ClipLoader } from "react-spinners";
 
 const Login = () => {
   const navigate = useNavigate();
   const [isPassword, setIsPassword] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const payload = {
+    email,
+    password,
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    postApi(endPoints.auth.login, payload, {
+      successMsg: "Welcome Back !",
+      successMsgTitle: "Success",
+      setLoading,
+      additionalFunctions: [
+        (res) => tokenSaver(res?.accessToken),
+         () => navigate("/dashboard")
+      ],
+    });
+  };
 
   return (
     <>
@@ -19,7 +43,7 @@ const Login = () => {
           </div>
           <h5 className={styles.headline}>Admin Login</h5>
 
-          <form className={styles.form_container}>
+          <form className={styles.form_container} onSubmit={submitHandler}>
             <div className={styles.input_group}>
               <label htmlFor="email">Email</label>
               <div className={styles.input_container}>
@@ -28,6 +52,8 @@ const Login = () => {
                   id="email"
                   name="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -40,6 +66,8 @@ const Login = () => {
                   id="password"
                   name="password"
                   placeholder="Enter your Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 {!isPassword ? (
                   <FaEyeSlash
@@ -61,12 +89,8 @@ const Login = () => {
               Forget Password ?
             </Link>
 
-            <button
-              className={styles.submitBtn}
-              type="button"
-              onClick={() => navigate("/dashboard")}
-            >
-              Continue
+            <button className={styles.submitBtn} type="submit">
+              {loading ? <ClipLoader color="#fff" /> : "Submit"}
             </button>
           </form>
         </div>

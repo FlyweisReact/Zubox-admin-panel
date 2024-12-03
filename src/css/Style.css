@@ -4,8 +4,8 @@
  * @format
  */
 ::-webkit-scrollbar {
-  width: 5px;
-  display: none;
+  width: 2px;
+  /* display: none; */
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -962,4 +962,105 @@ table tbody tr td {
 
 .navbar .content .ham-menu {
   display: none;
+}
+
+.fullscreen-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 10000;
+}
+
+.fullscreen-spinner .spinner {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top: 2px solid rgba(0, 0, 0, 0.45);
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.view_place_canvas {
+  padding: 20px;
+}
+.view_place_canvas * {
+  margin: 0;
+}
+.view_place_canvas .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding-bottom: 10px;
+}
+.view_place_canvas .head::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px; /* Adjust the thickness of the border */
+  background: linear-gradient(to right, transparent, #3bd9c9, transparent);
+  display: block;
+}
+.view_place_canvas .head .title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+}
+.view_place_canvas .head .close_btn {
+  width: 30px;
+  height: 30px;
+  background-color: #dde0e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.view_place_canvas .content {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.view_place_canvas .content .description_box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.view_place_canvas .content .description_box .label {
+  font-size: var(--font-size-smaller);
+  font-weight: 600;
+}
+.view_place_canvas .content .description_box .value {
+  font-size: var(--font-size-extra-small);
+  font-weight: 600;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.view_place_canvas .content .thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
 }
