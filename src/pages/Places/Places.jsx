@@ -305,90 +305,96 @@ const Places = () => {
       </DefaultDialog>
 
       <DefaultDialog show={isEdit} handleClose={() => setIsEdit(false)}>
-        <div className={`${styles.add_skills} ${styles.edit_skills} `}>
-          <div className={styles.head}>
-            <div className={styles.point}></div>
-            <h5 className={styles.headline}>Edit Place</h5>
+        <div className={"view_place_canvas"}>
+          <div className={"head"}>
+            <h6 className={"title"}> Edit Place </h6>
+            <div className={"close_btn"} onClick={() => setIsEdit(false)}>
+              <IoClose size={20} />
+            </div>
           </div>
-          <form className={styles.form_container} onSubmit={updateHandler}>
-            <div className={styles.input_group}>
-              <label>Place Name * </label>
-              <input
-                type="text"
-                required
-                value={updateName}
-                onChange={(e) => setUpdateName(e.target.value)}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Place Latitude *</label>
-              <input
-                type="text"
-                required
-                value={updateLatitude}
-                onChange={(e) => setUpdateLatitude(e.target.value)}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Place Longitude *</label>
-              <input
-                type="text"
-                required
-                value={updateLongitude}
-                onChange={(e) => setUpdateLongitude(e.target.value)}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Location</label>
-              <input
-                type="text"
-                value={updateLocation}
-                onChange={(e) => setUpdateLocation(e.target.value)}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Type</label>
-              <select
-                value={updateType}
-                onChange={(e) => setUpdateType(e.target.value)}
-              >
-                <option value=""></option>
-                <option value="people">People</option>
-                <option value="place">Place</option>
-                <option value="things">Things</option>
-                <option value="Activity">Activity</option>
-              </select>
-            </div>
-            <div className={styles.input_group}>
-              <label>Date</label>
-              <input
-                type="date"
-                value={updateDate}
-                onChange={(e) => setUpdateDate(e.target.value)}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Image</label>
-              <input
-                type="file"
-                onChange={(e) => setUpdateImage(e.target.files[0])}
-              />
-            </div>
-            <div className={styles.input_group}>
-              <label>Description</label>
-              <input
-                type="text"
-                value={updateDescription}
-                onChange={(e) => setUpdateDescription(e.target.value)}
-              />
-            </div>
+          <div className="content">
+            <div className={`${styles.add_skills} ${styles.edit_skills} `}>
+              <form className={styles.form_container} onSubmit={updateHandler}>
+                <div className={styles.input_group}>
+                  <label>Place Name * </label>
+                  <input
+                    type="text"
+                    required
+                    value={updateName}
+                    onChange={(e) => setUpdateName(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Place Latitude *</label>
+                  <input
+                    type="text"
+                    required
+                    value={updateLatitude}
+                    onChange={(e) => setUpdateLatitude(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Place Longitude *</label>
+                  <input
+                    type="text"
+                    required
+                    value={updateLongitude}
+                    onChange={(e) => setUpdateLongitude(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Location</label>
+                  <input
+                    type="text"
+                    value={updateLocation}
+                    onChange={(e) => setUpdateLocation(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Type</label>
+                  <select
+                    value={updateType}
+                    onChange={(e) => setUpdateType(e.target.value)}
+                  >
+                    <option value=""></option>
+                    <option value="people">People</option>
+                    <option value="place">Place</option>
+                    <option value="things">Things</option>
+                    <option value="Activity">Activity</option>
+                  </select>
+                </div>
+                <div className={styles.input_group}>
+                  <label>Date</label>
+                  <input
+                    type="date"
+                    value={updateDate}
+                    onChange={(e) => setUpdateDate(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Image</label>
+                  <input
+                    type="file"
+                    onChange={(e) => setUpdateImage(e.target.files[0])}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label>Description</label>
+                  <input
+                    type="text"
+                    value={updateDescription}
+                    onChange={(e) => setUpdateDescription(e.target.value)}
+                  />
+                </div>
 
-            <div className={styles.btn_container}>
-              <button className={styles.submit} type="submit">
-                Submit
-              </button>
+                <div className={styles.btn_container}>
+                  <button className={styles.submit} type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </DefaultDialog>
     </>

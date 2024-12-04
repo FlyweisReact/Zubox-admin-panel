@@ -5,8 +5,9 @@ import { IoSearch } from "react-icons/io5";
 import { FaBars } from "react-icons/fa";
 import { SidebarCanvas } from "../Modals/Modals";
 import { avatar } from "../../assest";
+import { debouncedSetQuery } from "../../utils/utils";
 
-const Navbar = ({ text }) => {
+const Navbar = ({ text, setQuery }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -32,7 +33,11 @@ const Navbar = ({ text }) => {
 
         <div className="search_bar">
           <IoSearch color="#000000" />
-          <input type="search" placeholder="Search" />
+          <input
+            type="search"
+            placeholder="Search"
+            onChange={(e) => debouncedSetQuery(e.target.value, setQuery)}
+          />
           <img src={avatar} alt="" className="avatar" />
         </div>
       </div>

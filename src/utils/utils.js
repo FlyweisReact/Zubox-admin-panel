@@ -19,4 +19,19 @@ const LogOutHandler = () => {
   navigate("/");
 };
 
-export { ScrollToTop, LogOutHandler };
+const returnFullName = (item) => {
+  if (item?.fullName) {
+    return item.fullName;
+  } else {
+    return (item?.firstName || "") + " " + (item?.lastName || "");
+  }
+};
+
+const debouncedSetQuery = (term, setQuery) => {
+  clearTimeout(debouncedSetQuery.timeoutId);
+  debouncedSetQuery.timeoutId = setTimeout(() => {
+    setQuery(term);
+  }, 500);
+};
+
+export { ScrollToTop, LogOutHandler, returnFullName, debouncedSetQuery };

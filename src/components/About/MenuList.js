@@ -1,13 +1,29 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../css/modules/aboutus.module.css";
 import TableLayout from "../TableLayout";
 import { DefaultDialog, DeleteConfirmation } from "../Modals/Modals";
+import { getApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const MenuList = () => {
   const [isDelete, setIsDelete] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const fetchMenu = () => {
+    getApi(endPoints.menuList.getAll, {
+      setResponse,
+      setLoading,
+    });
+  };
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
 
   const thead = ["Menu ID", "Menu ID", "Created on", "Actions"];
 

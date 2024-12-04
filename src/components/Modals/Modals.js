@@ -21,6 +21,7 @@ export const DeleteConfirmation = ({
   open,
   setOpen,
   text = "Are you sure?",
+  deleteHandler,
 }) => {
   return (
     <AnimatePresence>
@@ -39,7 +40,11 @@ export const DeleteConfirmation = ({
             </div>
 
             <div className={"btn_container"}>
-              <button className={"submit"} onClick={() => setOpen(false)}>
+              <button
+                className={"submit"}
+                type="button"
+                onClick={() => deleteHandler()}
+              >
                 YES
               </button>
               <button className={"reset"} onClick={() => setOpen(false)}>
@@ -53,7 +58,7 @@ export const DeleteConfirmation = ({
   );
 };
 
-export const DefaultDialog = ({ show, handleClose, children ,size }) => {
+export const DefaultDialog = ({ show, handleClose, children, size }) => {
   return (
     <Modal
       show={show}
@@ -141,7 +146,6 @@ export const SidebarCanvas = ({ show, handleClose }) => {
   const navHandler = (link) => {
     navigate(link);
     handleClose();
-    
   };
   return (
     <Offcanvas show={show} onHide={handleClose}>
@@ -172,6 +176,3 @@ export const SidebarCanvas = ({ show, handleClose }) => {
     </Offcanvas>
   );
 };
-
-
-

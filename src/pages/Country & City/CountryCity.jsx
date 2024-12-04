@@ -1,16 +1,38 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "../../css/modules/cell.module.css";
 import TableLayout from "../../components/TableLayout";
-import { postApi } from "../../Repository/Api";
+import { deleteApi, getApi, postApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
+import { FullscreenLoader } from "../../components/Loader";
 
 const CountryCity = () => {
   const [loading, setLoading] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
+  const [response, setResponse] = useState(null);
+
+  const fetchHandler = () => {
+    getApi(endPoints.city.getAll, {
+      setResponse,
+      setLoading,
+    });
+  };
+
+  const removeHandler = (id) => {
+    deleteApi(endPoints.city.remove(id), {
+      successMsgTitle: "Success",
+      successMsg: "Removed !",
+      additionalFunctions: [fetchHandler],
+      setLoading
+    });
+  };
+
+  useEffect(() => {
+    fetchHandler();
+  }, []);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -22,108 +44,31 @@ const CountryCity = () => {
       setLoading,
       successMsgTitle: "Success",
       successMsg: "Created !",
+      additionalFunctions: [fetchHandler],
     });
   };
 
-  const body = [
-    [
-      "India",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-    [
-      "Pakistan",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-    [
-      "China",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-    [
-      "Russia",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-
-    [
-      "USA",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-
-    [
-      "Europe",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-
-    [
-      "Sri-Lanka",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-
-    [
-      "England",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-
-    [
-      "Canada",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-    [
-      "Australia",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-    [
-      "Ukraine",
-      "List",
-      <div className={styles.btn_container}>
-        <button className={styles.submit}>Edit</button>
-        <button className={styles.reset}>Delete</button>
-      </div>,
-    ],
-  ];
+  const body = response?.data?.map((item) => [
+    item?.name,
+    item?.city?.map(
+      (i, index) => `${i?.name} ${index + 1 !== item?.city?.length ? "," : ""} `
+    ),
+    <div className={styles.btn_container}>
+      <button className={styles.submit}>Edit</button>
+      <button
+        className={styles.reset}
+        type="button"
+        onClick={() => removeHandler(item?._id)}
+      >
+        Delete
+      </button>
+    </div>,
+  ]);
 
   return (
     <>
       <Navbar text={"Country & City"} />
+      {loading && <FullscreenLoader />}
       <div className={styles.flex_container}>
         <div className={styles.left_container}>
           <div className={`${styles.head} ${styles.place_head}`}>
@@ -165,7 +110,9 @@ const CountryCity = () => {
             </div>
 
             <div className={styles.btn_container}>
-              <button className={styles.submit}>Save</button>
+              <button className={styles.submit} type="submit">
+                Save
+              </button>
             </div>
           </form>
         </div>

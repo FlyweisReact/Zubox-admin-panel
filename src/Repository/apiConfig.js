@@ -24,7 +24,29 @@ const endPoints = {
   },
   city: {
     create: "api/v1/admin/addCity",
+    getAll: "api/v1/admin/City/All",
+    remove: (id) => `api/v1/admin/City/${id}`,
   },
+  skill: {
+    create: "api/v1/admin/addSkill",
+    getAll: "api/v1/admin/SkillAll/All",
+    update: (id) => `api/v1/admin/Skill/${id}`,
+    remove: (id) => `api/v1/admin/Skill/${id}`,
+  },
+  siteMap: {
+    create: "api/v1/admin/addSiteMap",
+    getAll: ({ page = 1, limit = 5 }) =>
+      `api/v1/admin/SiteMapAll/SiteMap?page=${page}&limit=${limit}`,
+  },
+  users: {
+    getAll: ({ search = "" }) => `api/v1/admin/user/ForAdmin?search=${search}`,
+    remove : (id) => `api/v1/admin/user/${id}`,
+    updateUser : (id) => `api/v1/admin/editUserProfile/${id}`
+  },
+  menuList : {
+    getAll  : "api/v1/admin/Menu/getMenu"
+  
+  }
 };
 
 export default endPoints;

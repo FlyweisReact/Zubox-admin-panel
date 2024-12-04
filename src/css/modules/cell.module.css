@@ -11,13 +11,12 @@
 .places_table.table_container table tbody tr td {
   border: none;
   position: relative;
- 
 }
-.places_table.table_container table tbody tr td{
+.places_table.table_container table tbody tr td {
   border-right: 1px solid #3bd9c9;
 }
 .places_table.table_container table thead tr th:last-child,
-.places_table.table_container table tbody tr td:last-child{
+.places_table.table_container table tbody tr td:last-child {
   border-right: none;
 }
 
@@ -106,8 +105,13 @@
   background-color: #fff;
   border-radius: 20px;
 }
-.add_skills.edit_skills{
+.add_skills.edit_skills {
   width: 100%;
+  padding: 0px;
+}
+.add_skills.edit_skills .form_container {
+  padding: 0px;
+  margin-top: 0;
 }
 
 .add_skills .head {
@@ -146,8 +150,8 @@
   font-size: var(--font-size-xs-small);
   font-weight: 500;
 }
-.add_skills .form_container input ,
-.add_skills .form_container select{
+.add_skills .form_container input,
+.add_skills .form_container select {
   width: 100%;
   border: 1px solid #ddd;
   outline: none;
@@ -186,9 +190,6 @@
 .add_skills .form_container .btn_container button.reset {
   color: #af1740;
 }
-
-
-
 
 @media (max-width: 575.98px) {
   .flex_container {

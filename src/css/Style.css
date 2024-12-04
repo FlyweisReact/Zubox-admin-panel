@@ -1033,7 +1033,7 @@ table tbody tr td {
   cursor: pointer;
 }
 .view_place_canvas .content {
-  padding: 10px 0px;
+  padding: 10px ;
   display: flex;
   flex-direction: column;
   gap: 10px;

@@ -100,6 +100,11 @@
   border-radius: 50px;
   font-size: var(--font-size-extra-small);
 }
+.select_map_container .btn_container button.active {
+  border: 1px solid #dddd;
+  background-color: #dddd;
+}
+
 
 .create_map_container .form_container .form_btns {
   display: flex;
