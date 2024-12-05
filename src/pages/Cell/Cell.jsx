@@ -4,9 +4,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import styles from "../../css/modules/cell.module.css";
 import TableLayout from "../../components/TableLayout";
-import { deleteApi, getApi, postApi } from "../../Repository/Api";
+import { deleteApi, getApi, postApi, putApi } from "../../Repository/Api";
 import endPoints from "../../Repository/apiConfig";
 import { FullscreenLoader } from "../../components/Loader";
+import { DefaultDialog } from "../../components/Modals/Modals";
+import { IoClose } from "react-icons/io5";
 
 const Cell = () => {
   const [loading, setLoading] = useState(false);
@@ -17,6 +19,16 @@ const Cell = () => {
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const [page, setPage] = useState(1);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
+  const [isView, setIsView] = useState(false);
+  // update cell
+  const [updateParentCell, setUpdateParentCell] = useState("");
+  const [updateCell, setUpdateCell] = useState("");
+  const [updateType, setUpdateType] = useState("");
+  const [updateDescription, setUpdateDescription] = useState("");
+  const [updateImage, setUpdateImage] = useState(null);
+  // ==========
 
   const fetchHandler = useCallback(() => {
     getApi(endPoints.cell.getAll({ limit: 5, page }), {
@@ -28,6 +40,15 @@ const Cell = () => {
   useEffect(() => {
     fetchHandler();
   }, [fetchHandler]);
+
+  useEffect(() => {
+    if (isEdit && selectedItem) {
+      setUpdateParentCell(selectedItem?.parentCell);
+      setUpdateCell(selectedItem?.name);
+      setUpdateType(selectedItem?.type);
+      setUpdateDescription(selectedItem?.description);
+    }
+  }, [isEdit, selectedItem]);
 
   const removeHandler = (id) => {
     deleteApi(endPoints.cell.remove(id), {
@@ -55,6 +76,24 @@ const Cell = () => {
     });
   };
 
+  const update_cell_handler = (e) => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append("parentCell", updateParentCell);
+    fd.append("name", updateCell);
+    if (updateImage) {
+      fd.append("image", updateImage);
+    }
+    fd.append("type", updateType);
+    fd.append("description", updateDescription);
+    putApi(endPoints.cell.update(selectedItem?._id), fd, {
+      setLoading,
+      successMsg: "Cell updated !",
+      successMsgTitle: "Success",
+      additionalFunctions: [() => setIsEdit(false), fetchHandler],
+    });
+  };
+
   const handleReset = () => {
     setParentCell("");
     setName("");
@@ -67,7 +106,24 @@ const Cell = () => {
     item?.name,
     item?.noOfMembers,
     <div className={styles.btn_container}>
-      <button className={styles.submit} type="button">
+      <button
+        className={styles.view}
+        type="button"
+        onClick={() => {
+          setSelectedItem(item);
+          setIsView(true);
+        }}
+      >
+        View
+      </button>
+      <button
+        className={styles.submit}
+        type="button"
+        onClick={() => {
+          setSelectedItem(item);
+          setIsEdit(true);
+        }}
+      >
         Edit
       </button>
       <button
@@ -79,6 +135,7 @@ const Cell = () => {
       </button>
     </div>,
   ]);
+
 
   return (
     <>
@@ -176,6 +233,118 @@ const Cell = () => {
           </form>
         </div>
       </div>
+
+      <DefaultDialog show={isEdit} handleClose={() => setIsEdit(false)}>
+        <div className={"view_place_canvas"}>
+          <div className={"head"}>
+            <h6 className={"title"}> Edit Cell </h6>
+            <div className={"close_btn"} onClick={() => setIsEdit(false)}>
+              <IoClose size={20} />
+            </div>
+          </div>
+          <div className="content">
+            <div className={`${styles.add_skills} ${styles.edit_skills} `}>
+              <form
+                className={styles.form_container}
+                onSubmit={update_cell_handler}
+              >
+                <div className={styles.input_group}>
+                  <label htmlFor="parent_cell">Select Parent Cell*</label>
+                  <input
+                    type="text"
+                    name="parent_cell"
+                    id="parent_cell"
+                    value={updateParentCell}
+                    required
+                    onChange={(e) => setUpdateParentCell(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label htmlFor="cell_name">Cell Name*</label>
+                  <input
+                    type="text"
+                    name="cell_name"
+                    id="cell_name"
+                    value={updateCell}
+                    required
+                    onChange={(e) => setUpdateCell(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label htmlFor="cell_image">Image</label>
+                  <input
+                    type="file"
+                    name="cell_image"
+                    id="cell_image"
+                    onChange={(e) => setUpdateImage(e.target.files[0])}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label htmlFor="cell_type">Type</label>
+                  <input
+                    type="text"
+                    name="cell_type"
+                    id="cell_type"
+                    value={updateType}
+                    onChange={(e) => setUpdateType(e.target.value)}
+                  />
+                </div>
+                <div className={styles.input_group}>
+                  <label htmlFor="cell_description">Description</label>
+                  <input
+                    type="text"
+                    name="cell_description"
+                    id="cell_description"
+                    value={updateDescription}
+                    onChange={(e) => setUpdateDescription(e.target.value)}
+                  />
+                </div>
+
+                <div className={styles.btn_container}>
+                  <button className={styles.submit} type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </DefaultDialog>
+
+      <DefaultDialog show={isView} handleClose={() => setIsView(false)}>
+        <div className={"view_place_canvas"}>
+          <div className={"head"}>
+            <h6 className={"title"}> {selectedItem?.name} </h6>
+            <div className={"close_btn"} onClick={() => setIsView(false)}>
+              <IoClose size={20} />
+            </div>
+          </div>
+          <div className={"content"}>
+            {selectedItem?.image && (
+              <img className="thumbnail" src={selectedItem?.image} alt="" />
+            )}
+
+            <div className={"description_box"}>
+              <p className={"label"}>Parent Cell</p>
+              <p className={"value"}> {selectedItem?.parentCell} </p>
+            </div>
+            <div className={"description_box"}>
+              <p className={"label"}>Cell Name</p>
+              <p className={"value"}> {selectedItem?.name} </p>
+            </div>
+           
+            <div className={"description_box"}>
+              <p className={"label"}>Type</p>
+              <p className={"value"}> {selectedItem?.type} </p>
+            </div>
+          
+            <div className={"description_box"}>
+              <p className={"label"}>Description</p>
+              <p className={"value"}> {selectedItem?.description} </p>
+            </div>
+          </div>
+        </div>
+      </DefaultDialog>
     </>
   );
 };

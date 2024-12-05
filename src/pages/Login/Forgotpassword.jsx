@@ -4,10 +4,27 @@ import { logo, resetGif } from "../../assest";
 import styles from "../../css/modules/login.module.css";
 import { IoArrowBack } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
 
 const Forgotpassword = () => {
-  const [step, setStep] = useState(1);
   const navigate = useNavigate();
+  const [step, setStep] = useState(1);
+  const [email, setEmail] = useState("");
+  const [response, setResponse] = useState(null);
+  
+
+  const forgetPassword = (e) => {
+    e.preventDefault();
+    const payload = {
+      email,
+    };
+    postApi(endPoints.auth.forgetPassword, payload, {
+      setResponse,
+    });
+  };
+
+  console.log(response);
 
   useEffect(() => {
     if (step === 2) {
@@ -29,7 +46,7 @@ const Forgotpassword = () => {
             We'll send you a link to reset your password.
           </h5>
 
-          <form className={styles.form_container}>
+          <form className={styles.form_container} onSubmit={forgetPassword}>
             <div className={styles.input_group}>
               <label htmlFor="email">Email</label>
               <div className={styles.input_container}>
@@ -38,15 +55,13 @@ const Forgotpassword = () => {
                   id="email"
                   name="email"
                   placeholder="Enter your email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
 
-            <button
-              className={styles.submitBtn}
-              type="button"
-              onClick={() => setStep(2)}
-            >
+            <button className={styles.submitBtn} type="submit">
               Reset Password
             </button>
             <button

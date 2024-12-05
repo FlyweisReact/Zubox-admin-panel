@@ -1,4 +1,19 @@
 /** @format */
+.create_btn_container {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+}
+.create_btn_container button {
+  padding: 10px 40px;
+  font-size: var(--font-size-smaller);
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 7px;
+  font-weight: 500;
+  color: #000;
+  outline: none;
+}
 
 .filter_btns {
   display: flex;
@@ -218,11 +233,7 @@
 .menu_list .status {
   background-color: #c8facd;
   padding: 5px 20px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 5px;
+  width: auto;
   margin: auto;
   border-radius: 50px;
   color: #01b529;
@@ -230,9 +241,11 @@
 .menu_list .status .blank {
   width: 6px;
   height: 6px;
+  display: inline-block;
   background-color: #01b529;
   border: 1px solid #01b529;
   border-radius: 100%;
+  margin-right: 5px;
 }
 .menu_list .date {
   color: #6e6893;
@@ -254,6 +267,7 @@
   border-radius: 50px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  outline: none;
 }
 .menu_list .btn_container button.edit_btn {
   color: #c39b0b;
@@ -306,7 +320,8 @@
   font-size: var(--font-size-extra-small);
   font-weight: 500;
 }
-.edit_container .form_container .input_group input {
+.edit_container .form_container .input_group input,
+.edit_container .form_container .input_group textarea {
   font-size: var(--font-size-extra-small);
   font-weight: 500;
   border: 1px solid #ddd;
@@ -418,18 +433,25 @@
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
-.subscriber_post .btn_container button.edit_btn{
-    color: #EFC42E;
+.subscriber_post .btn_container button.edit_btn {
+  color: #efc42e;
 }
-.subscriber_post .btn_container button.remove_btn{
-    color: #FF0000;
+.subscriber_post .btn_container button.remove_btn {
+  color: #ff0000;
 }
 
-.events thead tr th{
+.events thead tr th {
   border-right: 1px solid #b1b1b1;
 }
 
-
+.edit_modal {
+  width: 100%;
+  padding: 0px;
+}
+.edit_modal .form_container {
+  padding: 0px;
+  margin-top: 0;
+}
 @media (max-width: 768px) {
   .filter_btns button {
     font-size: var(--font-size-extra-small);

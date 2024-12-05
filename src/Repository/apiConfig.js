@@ -3,6 +3,7 @@
 const endPoints = {
   auth: {
     login: "api/v1/admin/login",
+    forgetPassword: "api/v1/admin/forgetPassword",
   },
   logo: {
     getLogo: "api/v1/admin/Logo/ForAdmin",
@@ -40,13 +41,27 @@ const endPoints = {
   },
   users: {
     getAll: ({ search = "" }) => `api/v1/admin/user/ForAdmin?search=${search}`,
-    remove : (id) => `api/v1/admin/user/${id}`,
-    updateUser : (id) => `api/v1/admin/editUserProfile/${id}`
+    remove: (id) => `api/v1/admin/user/${id}`,
+    updateUser: (id) => `api/v1/admin/editUserProfile/${id}`,
   },
-  menuList : {
-    getAll  : "api/v1/admin/Menu/getMenu"
-  
-  }
+  menuList: {
+    getAll: "api/v1/admin/Menu/getMenu",
+    create: "api/v1/admin/Menu/createMenu",
+    update: (id) => `api/v1/admin/Menu/updateMenu/${id}`,
+    remove: (id) => `api/v1/admin/Menu/deleteMenu/${id}`,
+  },
+  subscriberPost: {
+    create: "api/v1/admin/SubscriptionPost/createSubscriptionPost",
+    getAll: ({ page = 1, limit = 10 }) =>
+      `api/v1/admin/SubscriptionPost/getSubscriptionPost?page=${page}&limit=${limit}`,
+    update: (id) =>
+      `api/v1/admin/SubscriptionPost/updateSubscriptionPost/${id}`,
+    remove: (id) =>
+      `api/v1/admin/SubscriptionPost/deleteSubscriptionPost/${id}`,
+  },
+  events: {
+    create: "api/v1/admin/Event/createEvent",
+  },
 };
 
 export default endPoints;

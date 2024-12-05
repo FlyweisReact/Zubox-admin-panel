@@ -26,7 +26,7 @@ const CountryCity = () => {
       successMsgTitle: "Success",
       successMsg: "Removed !",
       additionalFunctions: [fetchHandler],
-      setLoading
+      setLoading,
     });
   };
 
@@ -54,7 +54,16 @@ const CountryCity = () => {
       (i, index) => `${i?.name} ${index + 1 !== item?.city?.length ? "," : ""} `
     ),
     <div className={styles.btn_container}>
-      <button className={styles.submit}>Edit</button>
+      {/* <button
+        className={styles.submit}
+        type="button"
+        onClick={() => {
+          setSelectedItem(item);
+          setIsEdit(true);
+        }}
+      >
+        Edit
+      </button> */}
       <button
         className={styles.reset}
         type="button"

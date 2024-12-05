@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import styles from "../../css/modules/aboutus.module.css";
 import TableLayout from "../TableLayout";
 import { DeleteConfirmation } from "../Modals/Modals";
+import { getApi, postApi } from "../../Repository/Api";
+import endPoints from "../../Repository/apiConfig";
+import { FullscreenLoader } from "../Loader";
 
 const thead = [
   "ID",
@@ -17,6 +20,30 @@ const thead = [
 
 const Events = () => {
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("");
+  const [date, setDate] = useState("");
+  const [isEdit, setIsEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const payload = {
+      name,
+      description,
+      priority,
+      date,
+    };
+    if (!isEdit) {
+      postApi(endPoints.events.create, payload, {
+        successMsg: "Event Created Successfully !",
+        setLoading,
+        additionalFunctions: [() => setIsOpen(false)],
+      });
+    }
+  };
 
   const data = [
     [
@@ -203,10 +230,28 @@ const Events = () => {
 
   return (
     <>
+      {loading && <FullscreenLoader />}
+
+      <div className={styles.create_btn_container}>
+        <button
+          type="button"
+          onClick={() => {
+            setIsEdit(false);
+            setIsOpen(true);
+          }}
+        >
+          Create Menu
+        </button>
+      </div>
+
       <div className={`${styles.subscriber_post} ${styles.events}`}>
         <TableLayout thead={thead} tbody={data} isPagination={false} />
       </div>
+
       <DeleteConfirmation setOpen={setOpen} open={open} />
+
+
+      
     </>
   );
 };
